@@ -1,0 +1,528 @@
+Steps to  Launch the Lab from LMS
+
+> Go to https://lms.simplilearn.com/
+> Click on to Program button under Post Graduate Program in DevOps 
+> Select Course 2 - PD DO - DevOps Certification Training
+> Go to Practice Lab on left side and click on it
+> Click on DevOps in AWS V2
+> Click on Launch Lab button at right bottom
+> Click on RDP (Remote Desktop protocol) access 
+> Click on Start Instance button and click Yes
+> It will take a while for the lab environment to start. Pls wait
+> Click on RDP Access
+> Click on Auth URL - blue button - to launch the lab
+> Lab will launch , click on OK button to proceed
+> Lab desktop will launch
+
+*********
+
+Steps to Launch Lab via SSH
+
+> Go to https://lms.simplilearn.com/
+> Click on to Program button under Post Graduate Program in DevOps 
+> Select Course 2 - PD DO - DevOps Certification Training
+> Go to Practice Lab on left side and click on it
+> Click on DevOps in AWS V2
+> Click on Launch Lab button at right bottom
+> Click on Web Console
+> Open a SSH client like GIT bash
+> Enter the below command - 
+      ssh yourusername@ip_on_webconsole -p 42006
+> It will ask for password. Give the password from WebConsole.
+> you will be connected to lab via SSH
+
+************
+IF ANY ISSUES WITH ACCESSING THE LAB- PLS REACH OUT TO SUPPORT TEAM
+*************
+
+Linux  Commands
+
+Click on the Terminal at button[ it will be a square balck button].
+Terminal application will open. It will be black screen
+
+Linux commands are case sensitive.
+
+
+
+
+Check Version of OS installed
+
+$ lsb_release -a
+   LSB here is Linux standard Base
+
+Clear the terminal Screen
+$ clear
+
+Present working directory or the current directory you are working on
+$ pwd
+
+List the contents of a particular directory
+$ ls
+
+List of contents of a particular directory
+$ ls Desktop/
+            $ ls /tmp
+
+Show contents of a directory in a list format
+$ ls -l
+
+Show all the files as well as hidden files and directories
+            $ ls -al
+
+Manual page for linux commands 
+ You will give : man linux command
+It will display all details of the command and its options.
+
+Example : man pwd
+
+Come out of the page - press q
+  
+Create a new Directory 
+$ mkdir testdir
+Creates a new directory in the current directory
+Verify if the directory is created or not
+$ ls
+
+ Go to a directory
+             $ cd testdir
+         You will be inside the testdir directory
+               Now give ls or ls -al
+
+                 There are no files or directories in it.
+                 You will see something as . and ..
+                 Here . represents its current working directory
+                 Here .. represents previous or parent working directory
+
+ Create a file inside the directory
+> create an empty file in the directory
+
+$ touch file1
+$ ls ⇒ you will see the file in the directory
+$ cat file1 ⇒This command prints the contents of the file,  no contents in the file
+
+Add lines inside the file => file1
+
+$ echo “Hello All” > file1
+
+Create a file with name file2 and add contents into the file
+$ echo “ hello everyone!” > file2
+
+In the above command echo will create a file with name file2 and will also add content “hello everyone!” into it.
+
+$ cat file2
+
+Now overwrite the contents of the file2
+
+$ echo “Hello DevOps” > file2
+
+Now append more lines to file2
+
+$ echo “Learning Linux commands” >> file2
+
+Now append lines in the same line not a new line to file 2
+
+$ echo -n “append in same line” >> file2
+$ echo -n “foo” >> file2
+$ echo -n “bar” >> file2
+$ cat file2
+
+Use up arrow  or down arrow to get previous commands
+
+
+ 
+using Vim editor
+
+vim file1
+
+press i
+
+enter data
+
+press esc --> :wq!
+give ls
+
+file will be in directory
+
+Create one more file
+
+Creta file using nano editor
+
+nano file1
+
+just enter data ==> new file
+
+ctl x ==> exit at bottom
+
+presss y to give yes
+
+press enter
+
+out of file
+Ls
+15.
+          Make a copy of an exisitng file
+
+          cp sourcefile newfilename
+
+          cp file1 copiedfile
+
+           ls
+
+          cat copiedfile
+
+          file content will be same
+
+16. Rename a file
+
+$ mv file1 newfilename
+
+ls 
+File 1 will not be there.. New file will be there with name newfilename
+
+This command is also used to move a file from 1 directory to another
+
+$ mv file1 /tmp/newfile
+
+17. USER management & permissions of a File
+
+Become a super user to provide privileged access to create, and installation
+
+by default in root is the privileged user and you can become a root user by giving command
+
+$ sudo su -
+
+superuser do superuser -
+
+18. 
+
+create a user in Linux
+
+first become root user and then execute these commands.
+
+$ useradd alice
+$ useradd bob
+
+cat /etc/passwd ==> users in this system that have been created, at end you will see alice and bob also
+
+19. 
+
+Delete a User
+********
+
+userdel bob
+
+to check the output
+
+give cat /etc/passwd
+
+or 
+
+tail /etc/passwd ==> will return last lines
+
+you will see bob is deleted
+
+20.
+Create a user group
+
+what is a group ==> set of users form a group
+
+commad to create a group
+
+# groupadd caltech ==> creates a new group
+
+see the group created
+
+# cat /etc/group  ==> shows information about all the groups, at end see you group name
+right now there is no user in it
+
+scroll up and see other groups like wheel which has user ec2-user
+wheel:x:10:ec2-user
+
+adm group which has user ec2-user
+
+
+adm:x:4:ec2-user
+
+extreme right is user and left is group name
+
+Also note that, when we just create a user, it also creates a group with same name as user
+hence you see alice and bob at the end
+
+
+21.
+****************
+
+Now add users to the created group== command ==> usermod
+
+
+# usermod -G caltech alice
+
+modify user and add alice user to group purdue
+
+-g ==> group 
+
+# cat /etc/group
+
+caltech:x:1003:alice
+
+***********************************
+
+22. Change Permissions of a file
+
+
+
+File Permissions
+$ ls -l
+
+You will see we have 2 files file1 file2
+
+You will see
+
+-rw-rw-r-r
+
+Here
+
+: in beginning means file(-) or directory(d) or symlink(l)
+                  rw- : shows what current user can do in this file
+                  rw- : 2nd set herr show what users in the group can do on this file
+                  R-r : 3rd set of permission is for other users that are not part of the group
+
+
+
+
+Change permission of file file1
+
+current permissions : -rw-rw-r-- 1 ec2-user ec2-user  177 Feb  6 02:20 file1
+
+
+change permissions for all users of the file: add executable permissions to the all users, owner + group + all users other than the group
+
+# chmod a+x file1
+
+here 
+
+a+x ==> a = all users(user, group , all users) , + add permission, x : executable permission
+
+new permission:
+
+-rwxrwxr-x 1 ec2-user ec2-user  177 Feb  6 02:20 file1  : executable added for all users
+
+Example 2:
+
+Now chnage permssion for group.. remove excutable permission for group on the file
+
+ls -al
+
+-rwxrwxr-x 1 ec2-user ec2-user  177 Feb  6 02:20 file1
+
+chmod g-x file1
+
+-rwxrw-r-x 1 ec2-user ec2-user  177 Feb  6 02:20 file1
+
+Example 3:
+
+remove executable for only main user of file
+
+chmod u-x file1
+
+-rw-rw-r-x 1 ec2-user ec2-user  177 Feb  6 02:20 file1
+
+
+Example 4:
+
+add executable permission to main user
+
+chmod u+x file1
+
+-rwxrw-r-- 1 ec2-user ec2-user  177 Feb  6 02:20 file
+
+Example 5:
+
+remove executable permission for others only
+
+chmod o-x file1
+
+-rwxrw-r-- 1 ec2-user ec2-user  177 Feb  6 02:20 file1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+                 
+
+
+
+
+
+
+
+
+
+      
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
